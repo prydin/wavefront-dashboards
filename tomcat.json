@@ -16,18 +16,17 @@
               "sources": [
                 {
                   "name": "uptime",
-                  "query": "ts(tomcat.jvm.runtime.Uptime)/3600000",
+                  "query": "ts(tomcat.jvm.runtime.Uptime, source=\"${env}\")/3600000",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
                 }
               ],
               "units": "Hours",
-              "base": 1,
+              "base": 0,
               "noDefaultEvents": false,
               "interpolatePoints": false,
               "includeObsoleteMetrics": false,
-              "description": "",
               "chartSettings": {
                 "type": "sparkline",
                 "windowing": "full",
@@ -65,18 +64,16 @@
               "sources": [
                 {
                   "name": "New Query",
-                  "query": "sum(ts(tomcat.GlobalRequestProcessor.requestCount, vm_name=${env}))",
+                  "query": "sum(ts(tomcat.GlobalRequestProcessor.requestCount, source=\"${env}\"))",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
                 }
               ],
-              "units": "",
-              "base": 1,
+              "base": 0,
               "noDefaultEvents": false,
               "interpolatePoints": false,
               "includeObsoleteMetrics": false,
-              "description": "",
               "chartSettings": {
                 "type": "sparkline",
                 "lineType": "linear",
@@ -114,18 +111,16 @@
               "sources": [
                 {
                   "name": "New Query",
-                  "query": "sum(ts(tomcat.GlobalRequestProcessor.bytesReceived, vm_name=${env}))",
+                  "query": "sum(ts(tomcat.GlobalRequestProcessor.bytesReceived, source=\"${env}\"))",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
                 }
               ],
-              "units": "",
-              "base": 1,
+              "base": 0,
               "noDefaultEvents": false,
               "interpolatePoints": false,
               "includeObsoleteMetrics": false,
-              "description": "",
               "chartSettings": {
                 "type": "sparkline",
                 "lineType": "linear",
@@ -163,18 +158,16 @@
               "sources": [
                 {
                   "name": "New Query",
-                  "query": "sum(ts(tomcat.GlobalRequestProcessor.bytesSent, vm_name=wfdemoc703))",
+                  "query": "sum(ts(tomcat.GlobalRequestProcessor.bytesSent, source=\"${env}\"))",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
                 }
               ],
-              "units": "",
-              "base": 1,
+              "base": 0,
               "noDefaultEvents": false,
               "interpolatePoints": false,
               "includeObsoleteMetrics": false,
-              "description": "",
               "chartSettings": {
                 "type": "sparkline",
                 "windowing": "full",
@@ -221,15 +214,16 @@
               "sources": [
                 {
                   "name": "New Query",
-                  "query": "rate(ts(tomcat.Servlet.requestCount))",
+                  "query": "rate(ts(tomcat.Servlet.requestCount, source=\"${env}\"))",
                   "scatterPlotSource": "Y",
-                  "querybuilderSerialization": "{\"_v\":1,\"metric\":\"ts(tomcat.Servlet.requestCount)\",\"filters\":[[],\"and\"],\"functions\":[[\"rate\",[]]]}",
+                  "querybuilderSerialization": "{\"_v\":1,\"metric\":\"ts(tomcat.Servlet.requestCount)\",\"filters\":[[[\"source\",\"${env}\"]],\"and\"],\"functions\":[[\"rate\",[]]]}",
                   "querybuilderEnabled": true,
+                  "secondaryAxis": false,
                   "sourceDescription": ""
                 }
               ],
               "units": "Units",
-              "base": 0,
+              "base": 1,
               "noDefaultEvents": false,
               "interpolatePoints": false,
               "includeObsoleteMetrics": false,
@@ -264,21 +258,21 @@
               "sources": [
                 {
                   "name": "Threads Busy",
-                  "query": "ts(tomcat.ThreadPool.currentThreadsBusy, vm_name=${env})",
+                  "query": "ts(tomcat.ThreadPool.currentThreadsBusy, source=\"${env}\")",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
                 },
                 {
                   "name": "Max Threads",
-                  "query": "ts(tomcat.ThreadPool.maxThreads, vm_name=${env})",
+                  "query": "ts(tomcat.ThreadPool.maxThreads, source=\"${env}\")",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
                 },
                 {
                   "name": "Total Live Threads",
-                  "query": "ts(tomcat.ThreadPool.currentThreadCount, vm_name=${env})",
+                  "query": "ts(tomcat.ThreadPool.currentThreadCount, source=\"${env}\")",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
@@ -319,7 +313,7 @@
               "sources": [
                 {
                   "name": "New Query",
-                  "query": "rate(ts(tomcat.Servlet.processingTime))",
+                  "query": "rate(ts(tomcat.Servlet.processingTime, source=\"${env}\"))",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
@@ -369,15 +363,14 @@
               "sources": [
                 {
                   "name": "CPU Load",
-                  "query": "ts(tomcat.OperatingSystem.ProcessCpuLoad, vm_name=${env})*100",
+                  "query": "ts(tomcat.OperatingSystem.ProcessCpuLoad, source=\"${env}\")*100",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
-                  "secondaryAxis": false,
                   "sourceDescription": ""
                 }
               ],
               "units": "%",
-              "base": 1,
+              "base": 0,
               "noDefaultEvents": false,
               "interpolatePoints": false,
               "includeObsoleteMetrics": false,
@@ -417,14 +410,14 @@
               "sources": [
                 {
                   "name": "New Query",
-                  "query": "rate(ts(tomcat.jvm.garbage.collector.CollectionCount, vm_name=${env}))",
+                  "query": "rate(ts(tomcat.jvm.garbage.collector.CollectionCount, source=\"${env}\"))",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
                 }
               ],
               "units": "Units",
-              "base": 1,
+              "base": 0,
               "noDefaultEvents": false,
               "interpolatePoints": false,
               "includeObsoleteMetrics": false,
@@ -459,14 +452,14 @@
               "sources": [
                 {
                   "name": "New Query",
-                  "query": "rate(ts(tomcat.jvm.garbage.collector.CollectionTime, vm_name=${env}))/10",
+                  "query": "rate(ts(tomcat.jvm.garbage.collector.CollectionTime, source=\"${env}\"))/10",
                   "scatterPlotSource": "Y",
                   "querybuilderEnabled": false,
                   "sourceDescription": ""
                 }
               ],
               "units": "%",
-              "base": 1,
+              "base": 0,
               "noDefaultEvents": false,
               "interpolatePoints": false,
               "includeObsoleteMetrics": false,
@@ -506,9 +499,9 @@
               "sources": [
                 {
                   "name": "New Query",
-                  "query": "ts(tomcat.jvm.memory.pool.Usage.used)",
+                  "query": "ts(tomcat.jvm.memory.pool.Usage.used, source=\"${env}\")",
                   "scatterPlotSource": "Y",
-                  "querybuilderSerialization": "{\"_v\":1,\"metric\":\"ts(tomcat.jvm.memory.pool.Usage.used)\",\"filters\":[[],\"and\"],\"functions\":[]}",
+                  "querybuilderSerialization": "{\"_v\":1,\"metric\":\"ts(tomcat.jvm.memory.pool.Usage.used)\",\"filters\":[[[\"source\",\"${env}\"]],\"and\"],\"functions\":[]}",
                   "querybuilderEnabled": true,
                   "secondaryAxis": false,
                   "sourceDescription": ""
@@ -549,18 +542,18 @@
               "sources": [
                 {
                   "name": "Heap Used",
-                  "query": "ts(tomcat.jvm.memory.HeapMemoryUsage.used)",
+                  "query": "ts(tomcat.jvm.memory.HeapMemoryUsage.used, source=\"${env}\")",
                   "scatterPlotSource": "Y",
-                  "querybuilderSerialization": "{\"_v\":1,\"metric\":\"ts(tomcat.jvm.memory.HeapMemoryUsage.used)\",\"filters\":[[],\"and\"],\"functions\":[]}",
+                  "querybuilderSerialization": "{\"_v\":1,\"metric\":\"ts(tomcat.jvm.memory.HeapMemoryUsage.used)\",\"filters\":[[[\"source\",\"${env}\"]],\"and\"],\"functions\":[]}",
                   "querybuilderEnabled": true,
                   "secondaryAxis": false,
                   "sourceDescription": ""
                 },
                 {
                   "name": "Max Heap",
-                  "query": "ts(tomcat.jvm.memory.HeapMemoryUsage.max)",
+                  "query": "ts(tomcat.jvm.memory.HeapMemoryUsage.max, source=\"${env}\")",
                   "scatterPlotSource": "Y",
-                  "querybuilderSerialization": "{\"_v\":1,\"metric\":\"ts(tomcat.jvm.memory.HeapMemoryUsage.max)\",\"filters\":[[],\"and\"],\"functions\":[]}",
+                  "querybuilderSerialization": "{\"_v\":1,\"metric\":\"ts(tomcat.jvm.memory.HeapMemoryUsage.max)\",\"filters\":[[[\"source\",\"${env}\"]],\"and\"],\"functions\":[]}",
                   "querybuilderEnabled": true,
                   "secondaryAxis": false,
                   "sourceDescription": ""
@@ -608,17 +601,17 @@
       "hideFromView": false,
       "description": null,
       "allowAll": null,
-      "tagKey": "vm_name",
+      "tagKey": "source",
       "queryValue": "ts(\"tomcat.jvm.runtime.Uptime\")",
-      "dynamicFieldType": "TAG_KEY",
+      "dynamicFieldType": "SOURCE",
       "reverseDynSort": null,
       "parameterType": "DYNAMIC",
       "label": "Environment",
-      "defaultValue": "defaultQuery",
+      "defaultValue": "Label_2",
       "valuesToReadableStrings": {
-        "defaultQuery": ""
+        "Label_2": ""
       },
-      "selectedLabel": "defaultQuery",
+      "selectedLabel": "Label_2",
       "value": ""
     }
   }
